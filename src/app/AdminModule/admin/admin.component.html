@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">Admin</span>
+  </div>
+</nav>
+<div class="container">
+
+  <form  #formvalue="ngForm" (ngSubmit)="AddPosts(formvalue.value)">
+    <div >
+      <label for="exampleInputEmail1" class="form-label"  >Main_category</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" name="main_category" ngModel  aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Sub_category</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="sub_category" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Product_name</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="product_name" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Product_descriptions</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="product_descriptions" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Image_Path</label>
+      <input type="file"  (change)="selectedFile($event)" multiple="multiple" class="form-control" id="exampleInputPassword1" name="image_paths" ngModel>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" >Price</label>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="price" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
