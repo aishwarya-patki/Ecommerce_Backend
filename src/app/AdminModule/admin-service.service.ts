@@ -25,7 +25,15 @@ export class AdminServiceService {
     fd.append('product_name',product.product_name);
     fd.append('product_descriptions',product.product_descriptions);
     fd.append('price',product.price.toString());
-    fd.append('image_paths', selected_file,product.product_name);
+    fd.append('image_paths', selected_file,product.product_name.toString().replace(/\s/g, "").toLowerCase());
+    if(product.product_beginner == null || product.product_beginner == undefined || !product.product_beginner)
+    {
+      product.product_beginner = false;
+    }
+    if(product.product_recommended == null || product.product_recommended == undefined || !product.product_recommended)
+    {
+      product.product_recommended = false;
+    }
     fd.append('product_beginner', product.product_beginner.toString());
     fd.append('product_recommended', product.product_recommended.toString());
     this.http.post("http://localhost:3000/product",fd).subscribe((data)=>{

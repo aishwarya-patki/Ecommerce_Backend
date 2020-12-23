@@ -1,13 +1,18 @@
 const multer = require('multer');
-//const model = require('../models/productModel');
+const MIME_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg',
+
+  }
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './uploads')
   },
   filename: function (req, file, cb) {
-
-    cb(null, Date.now() + file.originalname);
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, Date.now() + file.originalname+"."+ext);
   }
 })
 
