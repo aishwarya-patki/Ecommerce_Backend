@@ -31,6 +31,7 @@ export class AdminServiceService {
     this.http.post("http://localhost:3000/product",fd).subscribe((data)=>{
       console.log(data);
     });
+
   }
 
 }

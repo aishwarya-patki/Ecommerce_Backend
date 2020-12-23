@@ -5,7 +5,7 @@
 </nav>
 <div class="container">
 
-  <form  #formvalue="ngForm" (ngSubmit)="AddPosts(formvalue.value)">
+  <form  #formvalue="ngForm" (ngSubmit)="AddPosts(formvalue.value);formvalue.reset()">
     <div >
       <label for="exampleInputEmail1" class="form-label"  >Main_category</label>
       <input type="text" class="form-control" id="exampleInputEmail1" name="main_category" ngModel  aria-describedby="emailHelp">

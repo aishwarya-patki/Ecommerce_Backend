@@ -36,6 +36,7 @@ export class AdminComponent implements OnInit {
         product_recommended:formvalue.product_recommended
       }
      this.adminService.addProduct(addPost,this.selected_file);
+     //this.myTemplateVar.reset();
      //console.log(formvalue);
   }
 
