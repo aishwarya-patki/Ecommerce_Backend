@@ -10,6 +10,8 @@ exports.createProduct = async (req, res) => {
     product_descriptions: req.body.product_descriptions,
     image_paths: req.file.path,
     price: req.body.price,
+    product_beginner: req.body.product_beginner,
+    product_recommended: req.body.product_recommended
   });
 
   productObj

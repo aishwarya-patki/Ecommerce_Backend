@@ -25,7 +25,9 @@ export class AdminServiceService {
     fd.append('product_name',product.product_name);
     fd.append('product_descriptions',product.product_descriptions);
     fd.append('price',product.price.toString());
-    fd.append('image_paths', selected_file,selected_file.name);
+    fd.append('image_paths', selected_file,product.product_name);
+    fd.append('product_beginner', product.product_beginner.toString());
+    fd.append('product_recommended', product.product_recommended.toString());
     this.http.post("http://localhost:3000/product",fd).subscribe((data)=>{
       console.log(data);
     });

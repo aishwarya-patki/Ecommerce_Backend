@@ -23,6 +23,14 @@ const AllProducts = new mongoose.Schema({
         price:{
           type:Number,
           required:true
+        },
+        product_beginner:{
+          type:Boolean,
+          required:true
+        },
+        product_recommended:{
+          type:Boolean,
+          required:true
         }
 
 })
