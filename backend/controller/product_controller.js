@@ -26,4 +26,21 @@ exports.createProduct = async (req, res) => {
       console.log(error);
     });
 };
+exports.fetchProducts = (req, res) => {
+  product.find().then((data)=>{
+    res.json({
+      post:data
+    })
+  })
+}
+exports.fetchProductsById=(req,res)=>{
+console.log(req.params.id);
+const id= req.params.id;
+product.findById(id).then(
+  (data)=>{
+   res.status(200).json({
+     product:data
+   })
+  })
 
+}

@@ -7,23 +7,23 @@
 
   <form  #formvalue="ngForm" (ngSubmit)="AddPosts(formvalue.value);formvalue.reset()">
     <div >
-      <label for="exampleInputEmail1" class="form-label"  >Main_category</label>
+      <label for="exampleInputEmail1" class="form-label"  >Main Category</label>
       <input type="text" class="form-control" id="exampleInputEmail1" name="main_category" ngModel  aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label" >Sub_category</label>
+      <label for="exampleInputPassword1" class="form-label" >Sub Category</label>
       <input type="text" class="form-control" id="exampleInputPassword1" name="sub_category" ngModel>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label" >Product_name</label>
+      <label for="exampleInputPassword1" class="form-label" >Product Name</label>
       <input type="text" class="form-control" id="exampleInputPassword1" name="product_name" ngModel>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label" >Product_descriptions</label>
+      <label for="exampleInputPassword1" class="form-label" >Product Description</label>
       <input type="text" class="form-control" id="exampleInputPassword1" name="product_descriptions" ngModel>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label" >Image_Path</label>
+      <label for="exampleInputPassword1" class="form-label" >Image Path</label>
       <input type="file"  (change)="selectedFile($event)" multiple="multiple" class="form-control" id="exampleInputPassword1" name="image_paths" ngModel>
     </div>
     <div class="mb-3">

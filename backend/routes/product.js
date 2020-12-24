@@ -10,12 +10,9 @@ router.use(bodyparser.json());
 
 const product = require('../models/productModel');
 
-router.get('/', (req, res) => {
-  res.json({
-    message: "HELLO WORLD"
-  })
-})
+router.get('/', productController.fetchProducts);
 
 router.post('/', multer_upload, productController.createProduct );
 
+router.get('/:id',productController.fetchProductsById)
 module.exports = router;
