@@ -44,3 +44,15 @@ product.findById(id).then(
   })
 
 }
+exports.deleteProductsById=(req,res)=>{
+ console.log(req.params.id);
+  const id=req.params.id;
+  product.deleteOne(id).then(
+    (data)=>{
+      res.status(200).json({
+        product:data
+      })
+      }
+  )
+  }
+

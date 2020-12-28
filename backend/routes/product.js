@@ -15,4 +15,5 @@ router.get('/', productController.fetchProducts);
 router.post('/', multer_upload, productController.createProduct );
 
 router.get('/:id',productController.fetchProductsById)
+router.delete('/:id',productController.deleteProductsById)
 module.exports = router;
