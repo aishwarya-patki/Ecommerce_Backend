@@ -14,3 +14,34 @@ describe('AdminServiceService', () => {
     expect(service).toBeTruthy();
   });
 });
+var Request = require("request");
+
+describe("AdminServiceService", () => {
+    var server;
+    beforeAll(() => {
+        server = require("../../../../Ecommerce_Backend/backend/app.js");
+    });
+    afterAll(() => {
+        server.close();
+    });
+    describe("GET /", () => {
+        var data = {
+          status:0,
+          body:""
+        };
+        beforeAll((done) => {
+            Request.get("http://localhost:3000/", (error, response, body) => {
+                data.status=response.statusCode;
+                data.body = body;
+                done();
+            });
+        });
+        it("Status 200", () => {
+            expect(data.status).toBe(200);
+        });
+        it("Body", () => {
+            expect(data.body).toBe("WELCOME TO SERVER");
+        });
+    });
+   
+});

@@ -31,6 +31,11 @@ mongoose.connection.on('connected',()=>{
 app.use(express.static(__dirname));
 
 app.use('/product',productRoute);
+app.use('/',(req,res)=>{
+  res.send('<h1>WELCOME TO SERVER</h1>');
+})
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 })
