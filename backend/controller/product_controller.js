@@ -33,7 +33,7 @@ exports.fetchProducts = (req, res) => {
     })
   })
 }
-exports.fetchProductsById=(req,res)=>{
+exports.fetchProductById=(req,res)=>{
 console.log(req.params.id);
 const id= req.params.id;
 product.findById(id).then(
@@ -44,15 +44,14 @@ product.findById(id).then(
   })
 
 }
-exports.deleteProductsById=(req,res)=>{
+exports.deleteProductById=(req,res)=>{
  console.log(req.params.id);
   const id=req.params.id;
-  product.deleteOne(id).then(
-    (data)=>{
-      res.status(200).json({
-        product:data
-      })
-      }
-  )
+  product.findByIdAndDelete(id,(data)=>{
+    res.status(200).json({
+      message:"Deleted Successfull",
+      product:data
+    })
+  })
   }
 
