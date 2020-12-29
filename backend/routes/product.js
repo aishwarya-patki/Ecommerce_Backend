@@ -16,4 +16,5 @@ router.post('/', multer_upload, productController.createProduct );
 
 router.get('/:id',productController.fetchProductById);
 router.delete('/:id',productController.deleteProductById);
+//router.get("*", (_, res) => res.status(404).send("404 not found"))
 module.exports = router;

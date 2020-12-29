@@ -11,47 +11,59 @@ exports.createProduct = async (req, res) => {
     image_paths: req.file.path,
     price: req.body.price,
     product_beginner: req.body.product_beginner,
-    product_recommended: req.body.product_recommended
+    product_recommended: req.body.product_recommended,
   });
 
   productObj
     .save()
     .then((data) => {
       console.log("Product added Successfully");
-      res.json({
+      res.status(200).json({
         message: "Product added Successfully",
       });
     })
     .catch((error) => {
-      console.log(error);
+      res.status(501).json({ message: "Product not inserted" });
     });
 };
 exports.fetchProducts = (req, res) => {
-  product.find().then((data)=>{
-    res.json({
-      post:data
+  product
+    .find()
+    .then((data) => {
+      res.json({
+        post: data,
+      });
     })
-  })
-}
-exports.fetchProductById=(req,res)=>{
-console.log(req.params.id);
-const id= req.params.id;
-product.findById(id).then(
-  (data)=>{
-   res.status(200).json({
-     product:data
-   })
-  })
-
-}
-exports.deleteProductById=(req,res)=>{
- console.log(req.params.id);
-  const id=req.params.id;
-  product.findByIdAndDelete(id,(data)=>{
-    res.status(200).json({
-      message:"Deleted Successfull",
-      product:data
+    .catch((error) => {
+      res.status(501).json({ message: "Product not found" });
+    });
+};
+exports.fetchProductById = (req, res) => {
+  console.log(req.params.id);
+  const id = req.params.id;
+  product
+    .findById(id)
+    .then((data) => {
+      res.status(200).json({
+        product: data,
+      });
     })
-  })
-  }
-
+    .catch((error) => {
+      res.status(501).json({ message: "Product not found" });
+    });
+};
+exports.deleteProductById = (req, res) => {
+  console.log(req.params.id);
+  const id = req.params.id;
+  product
+    .findByIdAndDelete(id)
+    .then((data) => {
+      res.status(200).json({
+        message: "Deleted Successfull",
+        product: data,
+      });
+    })
+    .catch((error) => {
+      res.status(501).json({ message: "Product not deleted" });
+    });
+};

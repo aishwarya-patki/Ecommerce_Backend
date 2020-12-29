@@ -4,7 +4,7 @@ const bodyparser=require('body-parser');
 const productRoute=require('../backend/routes/product')
 const port = 3000;
 const mongoose=require('mongoose');
-
+const userRoute= require('../backend/routes/user')
 app.use(bodyparser.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -31,10 +31,13 @@ mongoose.connection.on('connected',()=>{
 app.use(express.static(__dirname));
 
 app.use('/product',productRoute);
+app.use('/user',userRoute);
 app.use('/',(req,res)=>{
   res.send('<h1>WELCOME TO SERVER</h1>');
 })
-
+app.get('*',(req,res)=>{
+  res.send('<h1>PAGE NOT FOUND</h1>');
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
