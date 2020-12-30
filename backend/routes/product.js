@@ -5,16 +5,17 @@ const multer = require('multer');
 const mongoose = require('mongoose');
 const productController = require('../controller/product_controller');
 const multer_upload = require('../middleware/upload');
+const checkAuth =  require('./../middleware/checkAuth')
 
 router.use(bodyparser.json());
 
 const product = require('../models/productModel');
 
-router.get('/', productController.fetchProducts);
+router.get('/',checkAuth.authorization, productController.fetchProducts);
 
-router.post('/', multer_upload, productController.createProduct );
+router.post('/', checkAuth.authorization, multer_upload, productController.createProduct );
 
-router.get('/:id',productController.fetchProductById);
-router.delete('/:id',productController.deleteProductById);
+router.get('/:id',checkAuth.authorization, productController.fetchProductById);
+router.delete('/:id',checkAuth.authorization, productController.deleteProductById);
 //router.get("*", (_, res) => res.status(404).send("404 not found"))
 module.exports = router;

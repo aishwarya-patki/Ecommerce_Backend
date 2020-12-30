@@ -5,6 +5,8 @@ const productRoute=require('../backend/routes/product')
 const port = 3000;
 const mongoose=require('mongoose');
 const userRoute= require('../backend/routes/user')
+//require('./../Nodemon.json').config();
+
 app.use(bodyparser.json());
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -24,6 +26,7 @@ mongoose.connect('mongodb+srv://admin:admin2020@cluster0.rvc82.mongodb.net/AllPr
 
 mongoose.connection.on('connected',()=>{
   console.log('connected');
+  console.log(process.env.JWT_KEY);
 });
 
 // mongoose.connect('mongodb+srv://admin:admin@2020!@cluster0.rvc82.mongodb.net/AllProducts?retryWrites=true&w=majority', {​​​​​ keepAlive: true, keepAliveInitialDelay: 300000 }​​​​​);
