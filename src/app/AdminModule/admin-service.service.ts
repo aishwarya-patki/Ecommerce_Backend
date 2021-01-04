@@ -41,5 +41,10 @@ export class AdminServiceService {
     });
 
   }
-
+ fetchProduct() {
+    return this.http.get<Product>("http://localhost:3000/product/");
+  }
+  fetchProductById(id:String) {
+    return this.http.get<Product>("http://localhost:3000/product/"+id);
+  }
 }

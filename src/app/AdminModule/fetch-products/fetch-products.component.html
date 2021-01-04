@@ -1,0 +1,9 @@
+<div class="card" >
+    <div *ngFor="let p of product"class="card-body">
+        <img [src]=p.image_paths class="card-img-top" alt="...">
+        <h5 class="card-title">{{p.product_name}}</h5>
+        <p class="card-text">{{p.product_descriptions}}
+            </p><a [routerLink]="['create',p._id]" class="btn btn-primary">edit</a>
+            <a href="#" class="btn btn-primary">delete</a>
+    </div>
+</div>

@@ -1,41 +1,37 @@
-<nav class="navbar navbar-light bg-light">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Admin</span>
-  </div>
-</nav>
+
 <div class="container">
 
   <form  #formvalue="ngForm" (ngSubmit)="AddPosts(formvalue.value);formvalue.reset()">
     <div >
       <label for="exampleInputEmail1" class="form-label"  >Main Category</label>
-      <input type="text" class="form-control" id="exampleInputEmail1" name="main_category" ngModel  aria-describedby="emailHelp">
+      <input type="text" class="form-control" id="exampleInputEmail1" name="main_category" [(ngModel)]="addPost.main_category" (change) = "modelChanged($event)" aria-describedby="emailHelp">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Sub Category</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" name="sub_category" ngModel>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="sub_category"  [(ngModel)]="addPost.sub_category" (change) = "modelChanged($event)">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Product Name</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" name="product_name" ngModel>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="product_name" [(ngModel)]="addPost.product_name" (change) = "modelChanged($event)">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Product Description</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" name="product_descriptions" ngModel>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="product_descriptions" [(ngModel)]="addPost.product_descriptions" (change) = "modelChanged($event)">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Image Path</label>
-      <input type="file"  (change)="selectedFile($event)" multiple="multiple" class="form-control" id="exampleInputPassword1" name="image_paths" ngModel>
+      <input type="file"  (change)="selectedFile($event)" multiple="multiple" class="form-control" id="exampleInputPassword1" name="image_paths" [(ngModel)]="addPost.image_paths" (change) = "modelChanged($event)">
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label" >Price</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" name="price" ngModel>
+      <input type="text" class="form-control" id="exampleInputPassword1" name="price" [(ngModel)]="addPost.price" (change) = "modelChanged($event)">
     </div>
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="product_beginner" ngModel>
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" name="product_beginner" [(ngModel)]="addPost.product_beginner" (change) = "modelChanged($event)">
       <label class="form-check-label" for="exampleCheck1">Beginner</label>
     </div>
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck2" name="product_recommended" ngModel>
+      <input type="checkbox" class="form-check-input" id="exampleCheck2" name="product_recommended" [(ngModel)]="addPost.product_recommended" (change) = "modelChanged($event)">
       <label class="form-check-label" for="exampleCheck1">Recommended</label>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>

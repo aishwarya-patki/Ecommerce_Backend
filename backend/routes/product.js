@@ -11,11 +11,12 @@ router.use(bodyparser.json());
 
 const product = require('../models/productModel');
 
-router.get('/',checkAuth.authorization, productController.fetchProducts);
+router.get('/', productController.fetchProducts);
 
 router.post('/', checkAuth.authorization, multer_upload, productController.createProduct );
 
-router.get('/:id',checkAuth.authorization, productController.fetchProductById);
+router.get('/:id', productController.fetchProductById);
 router.delete('/:id',checkAuth.authorization, productController.deleteProductById);
+
 //router.get("*", (_, res) => res.status(404).send("404 not found"))
 module.exports = router;
