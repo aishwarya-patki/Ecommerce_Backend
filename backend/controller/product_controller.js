@@ -1,4 +1,9 @@
 const product = require("../models/productModel");
+//const bodyParser = require('body-parser');
+const url = require('url');
+const querystring = require('querystring');
+const mongoose = require('mongoose');
+
 
 exports.createProduct = async (req, res) => {
   console.log(req.file);
@@ -27,16 +32,77 @@ exports.createProduct = async (req, res) => {
     });
 };
 exports.fetchProducts = (req, res) => {
-  product
-    .find()
+  let instrument = req.query.instrument;
+  let beginner = req.query.beginner;
+  let recommended = req.query.recommended;
+
+  console.log(instrument,beginner,recommended);
+  if(instrument && beginner && recommended){
+    product
+    .find({sub_category:instrument})
+    .where({product_beginner:beginner})
+    .where({product_recommended:recommended})
     .then((data) => {
-      res.json({
+      return res.json({
         post: data,
       });
     })
     .catch((error) => {
-      res.status(501).json({ message: "Product not found" });
+      return res.status(501).json({ message: "Product not found" });
     });
+  }
+  else if(instrument && beginner){
+    product
+    .find({sub_category:instrument})
+    .where({product_beginner:beginner})
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
+  else if(instrument && recommended){
+    product
+    .find({sub_category:instrument})
+    .where({product_recommended:recommended})
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
+  else if(instrument){
+    product
+    .find({sub_category:instrument})
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
+
+  else{
+    product
+    .find()
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
+
 };
 exports.fetchProductById = (req, res) => {
   console.log(req.params.id);
