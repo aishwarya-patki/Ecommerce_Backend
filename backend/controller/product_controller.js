@@ -89,7 +89,30 @@ exports.fetchProducts = (req, res) => {
       return res.status(501).json({ message: "Product not found" });
     });
   }
-
+  else if(recommended){
+    product
+    .find({product_recommended:recommended})
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
+  else if(beginner){
+    product
+    .find({product_beginner:true})
+    .then((data) => {
+      return res.json({
+        post: data,
+      });
+    })
+    .catch((error) => {
+      return res.status(501).json({ message: "Product not found" });
+    });
+  }
   else{
     product
     .find()

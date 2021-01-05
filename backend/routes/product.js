@@ -12,8 +12,6 @@ router.use(bodyparser.json());
 const product = require('../models/productModel');
 
 router.get('/', productController.fetchProducts);
-//router.get('/recommended')
-//router.get()
 
 router.post('/', checkAuth.authorization, multer_upload, productController.createProduct );
 
