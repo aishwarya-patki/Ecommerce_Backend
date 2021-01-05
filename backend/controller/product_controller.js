@@ -27,22 +27,16 @@ exports.createProduct = async (req, res) => {
     });
 };
 exports.fetchProducts = (req, res) => {
-  product.find({sub_category:"Guitar"}).then(data=>{
-    res.json({
-        d:data
+  product
+    .find()
+    .then((data) => {
+      res.json({
+        post: data,
+      });
     })
-  })
-
-  // product
-  //   .find()
-  //   .then((data) => {
-  //     res.json({
-  //       post: data,
-  //     });
-  //   })
-  //   .catch((error) => {
-  //     res.status(501).json({ message: "Product not found" });
-  //   });
+    .catch((error) => {
+      res.status(501).json({ message: "Product not found" });
+    });
 };
 exports.fetchProductById = (req, res) => {
   console.log(req.params.id);
