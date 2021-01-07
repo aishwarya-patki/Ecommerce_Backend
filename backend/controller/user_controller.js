@@ -23,6 +23,7 @@ exports.createUser = async (req, res) => {
 };
 
 exports.loginUser = async (req, res) => {
+  console.log("create",process.env.JWT_KEY)
   const userInput = await new userModel({
     email: req.body.email,
     password: req.body.password,
@@ -43,6 +44,7 @@ exports.loginUser = async (req, res) => {
   const token = await jwt.sign(
     {
       userid: userData._id,
+      username: userData.username,
       email: userData.email,
     },
     process.env.JWT_KEY,

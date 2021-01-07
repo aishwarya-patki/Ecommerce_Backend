@@ -5,6 +5,7 @@ const productRoute=require('../backend/routes/product')
 const port = 3000;
 const mongoose=require('mongoose');
 const userRoute= require('../backend/routes/user')
+const blogRoute= require('../backend/routes/blog')
 //require('./../Nodemon.json').config();
 
 app.use(bodyparser.json());
@@ -35,6 +36,7 @@ app.use(express.static(__dirname));
 
 app.use('/product',productRoute);
 app.use('/user',userRoute);
+app.use('/blog',blogRoute);
 app.use('/',(req,res)=>{
   res.send('<h1>WELCOME TO SERVER</h1>');
 })

@@ -15,7 +15,6 @@ router.get('/', productController.fetchProducts);
 
 router.post('/', checkAuth.authorization, multer_upload, productController.createProduct );
 
-router.get('/:id', productController.fetchProductById);
 router.delete('/:id',checkAuth.authorization, productController.deleteProductById);
 
 //router.get("*", (_, res) => res.status(404).send("404 not found"))
