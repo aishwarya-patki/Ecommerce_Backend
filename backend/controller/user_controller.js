@@ -4,6 +4,13 @@ const userModel = require("./../models/userModel");
 const encryption = require("./../middleware/encrypt");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const passport = require('passport');
+const cookieSession = require('cookie-session')
+require('./../middleware/passport-setup');
+
+
+// For an actual app you should configure this with an experation time, better keys, proxy and secure
+
 
 exports.createUser = async (req, res) => {
   const user = await new userModel({

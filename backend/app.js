@@ -2,12 +2,23 @@ const express = require('express');
 const app = express();
 const bodyparser=require('body-parser');
 const productRoute=require('../backend/routes/product')
-const port = 3000;
+const port = 4200;
 const mongoose=require('mongoose');
 const userRoute= require('../backend/routes/user')
 const blogRoute= require('../backend/routes/blog')
 const reviewRoute = require('../backend/routes/review')
 //require('./../Nodemon.json').config();
+const passport = require('passport');
+const cookieSession = require('cookie-session')
+require('./middleware/passport-setup');
+
+app.use(cookieSession({
+  name: 'tuto-session',
+  keys: ['key1', 'key2']
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(bodyparser.json());
 app.use((req, res, next) => {
