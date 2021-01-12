@@ -7,6 +7,7 @@ const checkAuth = require('../middleware/checkAuth')
 router.use(bodyparser.json());
 
 const review = require('../models/reviewModel');
+const passport = require('passport');
 
 router.get('/',reviewController.fetchReviews);
 
